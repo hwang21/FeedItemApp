@@ -20,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class MainFragment : Fragment() {
 
@@ -74,9 +73,7 @@ class MainFragment : Fragment() {
                         recyclerView.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
                         swipeContainer.isRefreshing = false
-                        adapter.apply {
-                            setData(it.data)
-                        }
+                        adapter.setData(it.data)
                     }
                     is ResponseState.Error -> {
                         recyclerView.visibility = View.VISIBLE
@@ -92,9 +89,5 @@ class MainFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance() = MainFragment()
     }
 }

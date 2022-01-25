@@ -2,6 +2,7 @@ package com.fox.feeditemsapp.di
 
 import com.fox.feeditemsapp.api.ApiService
 import com.fox.feeditemsapp.api.ApiServiceImpl
+import com.fox.feeditemsapp.model.FeedItem
 import com.fox.feeditemsapp.repository.Repository
 import com.fox.feeditemsapp.utils.Constants
 import dagger.Module
@@ -38,6 +39,12 @@ object AppModule {
     @Provides
     fun provideRepository(@Named("MockedApiService") apiService: ApiService): Repository {
         return Repository(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFeedItems(): List<FeedItem> {
+        return emptyList()
     }
 
 }
